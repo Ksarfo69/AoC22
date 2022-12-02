@@ -101,7 +101,7 @@ public class RockPaperScissors {
 
             String myPlay = splittedLines[1];
 
-
+            //I need to lose
             if(myPlay.equalsIgnoreCase("X"))
             {
                 int myScore = 0;
@@ -122,7 +122,7 @@ public class RockPaperScissors {
                 }
             }
 
-
+            //I need to draw
             else if(myPlay.equalsIgnoreCase("Y"))
             {
                 int myScore = 0;
@@ -143,7 +143,7 @@ public class RockPaperScissors {
                 }
             }
 
-
+            //I need to win
             else
             {
                 int myScore = 0;
