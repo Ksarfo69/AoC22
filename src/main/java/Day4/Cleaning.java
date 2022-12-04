@@ -72,9 +72,9 @@ public class Cleaning {
 
 
             if(Math.abs(firstElfStart) <= Math.abs(secondElfEnd)
-                    && Math.abs(firstElfEnd) >= Math.abs(secondElfEnd)
-                    || Math.abs(secondElfStart) <= Math.abs(firstElfEnd)
-                    && Math.abs(secondElfEnd) >= Math.abs(firstElfEnd)
+                    && Math.abs(firstElfEnd) >= Math.abs(secondElfStart)
+                    || Math.abs(firstElfStart) >= Math.abs(secondElfEnd)
+                    && Math.abs(secondElfEnd) >= Math.abs(firstElfStart)
             )
             {
                 totalCount+=1;
