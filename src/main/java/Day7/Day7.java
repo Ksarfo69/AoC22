@@ -33,6 +33,8 @@ public class Day7 {
             }
         }
 
+        System.out.println(folderStructure);
+
         Map<String, Integer> mapOfSizes = new HashMap<>();
 
         for(Map.Entry<String, List<String>> files : folderStructure.entrySet())
@@ -48,10 +50,52 @@ public class Day7 {
                 }
             }
 
-            mapOfSizes.put(files.getKey(), sizeCount);
+            mapOfSizes.put(files.getKey().split(" ")[2], sizeCount);
 
         }
+
         System.out.println(mapOfSizes);
-        //System.out.println(folderStructure);
+
+        Map<String, Integer> mapOfFinalSizes = new HashMap<>();
+
+        for(Map.Entry<String, List<String>> line : folderStructure.entrySet())
+        {
+            int sizeCount = 0;
+
+            for(String f : line.getValue())
+            {
+                if(f.startsWith("dir"))
+                {
+                    if(mapOfFinalSizes.containsKey("$ cd " + f.split(" ")[1]))
+                    {
+                        sizeCount+= mapOfFinalSizes.get("$ cd " + f.split(" ")[1]);
+                    }
+                    else
+                    {
+                        sizeCount+= mapOfSizes.get(f.split(" ")[1]);
+                    }
+                }
+                else
+                {
+                    sizeCount+= Integer.valueOf(f.split(" ")[0]);
+                }
+            }
+
+            mapOfFinalSizes.put(line.getKey(), sizeCount);
+        }
+
+        System.out.println(mapOfFinalSizes);
+
+
+        int result = 0;
+        for(Integer size : mapOfFinalSizes.values())
+        {
+            if(size <= 100000)
+            {
+                result+=size;
+            }
+        }
+
+        System.out.println(result);
     }
 }
